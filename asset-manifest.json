@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/renting-wheels/static/css/main.7acaea2f.css",
-    "main.js": "/renting-wheels/static/js/main.835bb6a1.js",
+    "main.js": "/renting-wheels/static/js/main.e52d6467.js",
     "index.html": "/renting-wheels/index.html",
     "main.7acaea2f.css.map": "/renting-wheels/static/css/main.7acaea2f.css.map",
-    "main.835bb6a1.js.map": "/renting-wheels/static/js/main.835bb6a1.js.map"
+    "main.e52d6467.js.map": "/renting-wheels/static/js/main.e52d6467.js.map"
   },
   "entrypoints": [
     "static/css/main.7acaea2f.css",
-    "static/js/main.835bb6a1.js"
+    "static/js/main.e52d6467.js"
   ]
 }
