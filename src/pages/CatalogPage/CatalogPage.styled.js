@@ -9,7 +9,7 @@ export const Wrapper = styled.div`
 `;
 
 export const Card = styled.div`
-  height: 150px;
+  // height: 150px;
   width: 180px;
   border: 2px solid black;
   border-radius: 4px;
