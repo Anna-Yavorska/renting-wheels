@@ -22,13 +22,16 @@ This is a web application that serves as a car catalog, where users can browse a
 1. Clone the repository to your local machine:
 
 git clone <repository URL>
+
 2. Install dependencies:
 
 cd catalog-app
 npm install
+
 3. Run the application:
 
 npm start
+
 4. Open the application in your browser at http://localhost:3000.
 
 ## Additional Information

@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { removeFromFavorites } from "../../redux/catalog/favoriteSlice";
+import { BookingForm } from "components/BookingForm/BookingForm";
 
 export default function FavoritePage() {
     const dispatch = useDispatch();
@@ -19,7 +20,8 @@ export default function FavoritePage() {
                       <p>{item.description}</p>
                   </li>
               ))}
-      </ul>
+          </ul>
+          <BookingForm/>
     </div>
   );
 }

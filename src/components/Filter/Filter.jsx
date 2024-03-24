@@ -50,7 +50,7 @@ export const Filter = ({onSearch}) => {
           <input type='radio' id='alcove' name='radioGroup' value='alcove' onChange={() => handleRadioChange("alcove")}/>
           <label htmlFor='alcove'>Alcove</label><br/>
         </div>
-        <button onClick={handleSearch}>Search</button>
+        <button  type="submit" onClick={handleSearch}>Search</button>
           </div>
     </FilterWrapper>
   );
