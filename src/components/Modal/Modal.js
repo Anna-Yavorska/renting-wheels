@@ -20,7 +20,7 @@ const customStyles = {
 };
 
 ReactModal.setAppElement('#root');
-export const Modal = ({ isOpen, isClose, gallery, name = "Sasha" }) => {
+export const Modal = ({ isOpen, isClose, gallery, price }) => {
     if (!isOpen) {
         return null;
     }
@@ -29,13 +29,20 @@ export const Modal = ({ isOpen, isClose, gallery, name = "Sasha" }) => {
       isOpen={isOpen}
       onRequestClose={isClose}
       style={customStyles}
-      contentLabel="Large image"
     >
       {gallery.map(item => (
         <li key={item}>
-          <img src={item} alt={name} height="50%" width="30%"/>
+          <img src={item} alt={price} height="50%" width="30%" />
         </li>
       ))}
+      <ul>
+        <li>
+          <h3>Features</h3>
+        </li>
+        <li>
+          <h3>Reviews</h3>
+        </li>
+      </ul>
     </ReactModal>
   );
 };
