@@ -5,7 +5,11 @@ import { fetchCatalog } from '../../redux/catalog/operations';
 import { Modal } from 'components/Modal/Modal';
 import { closeModal, openModal } from '../../redux/catalog/modalSlice';
 import { Filter } from 'components/Filter/Filter';
-import { addToFavorites } from '../../redux/catalog/favoriteSlice';
+import {
+  addToFavorites,
+  removeFromFavorites,
+} from '../../redux/catalog/favoriteSlice';
+import { saveFavoritesToLocalStorage } from 'helpers/saveFavoritesToLocalStorage';
 
 export default function CatalogPage() {
   const dispatch = useDispatch();
@@ -72,9 +76,17 @@ export default function CatalogPage() {
   const handleAddToFavorites = item => {
     const isFavorite = favorites.some(favorite => favorite._id === item._id);
     if (isFavorite) {
+      dispatch(removeFromFavorites(item._id));
+
+      const updatedFavorites = favorites.filter(
+        favorite => favorite._id !== item._id
+      );
+
+      saveFavoritesToLocalStorage(updatedFavorites);
       return;
     }
     dispatch(addToFavorites(item));
+    saveFavoritesToLocalStorage([...favorites, item]);
   };
 
   if (isLoading) {

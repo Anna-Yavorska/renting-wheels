@@ -1,6 +1,8 @@
 import { useDispatch, useSelector } from "react-redux";
-import { removeFromFavorites } from "../../redux/catalog/favoriteSlice";
+import { removeFromFavorites, setFavorires } from "../../redux/catalog/favoriteSlice";
 import { BookingForm } from "components/BookingForm/BookingForm";
+import { saveFavoritesToLocalStorage } from "helpers/saveFavoritesToLocalStorage";
+import { useEffect } from "react";
 
 export default function FavoritePage() {
     const dispatch = useDispatch();
@@ -8,7 +10,18 @@ export default function FavoritePage() {
 
     const handleRemoveFromFavorites = (itemId) => {
         dispatch(removeFromFavorites(itemId));
-    }
+        const updatedFavorites = favorites.filter(item => item._id !== itemId);
+
+        saveFavoritesToLocalStorage(updatedFavorites);
+    };
+
+    useEffect(() => {
+        const savedFavorites = localStorage.getItem('favorites');
+
+        if (savedFavorites) {
+            dispatch(setFavorires(JSON.parse(savedFavorites)));
+        }
+    }, [dispatch])
 
   return (
     <div>
