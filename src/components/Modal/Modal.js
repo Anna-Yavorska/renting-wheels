@@ -19,7 +19,6 @@ const customStyles = {
   },
 };
 
-ReactModal.setAppElement('#root');
 export const Modal = ({ isOpen, isClose, gallery, price }) => {
     if (!isOpen) {
         return null;

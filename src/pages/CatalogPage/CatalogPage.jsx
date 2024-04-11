@@ -3,7 +3,6 @@ import { Card, ListItem, LoadMoreButton, Wrapper } from './CatalogPage.styled';
 import { useEffect, useState } from 'react';
 import { fetchCatalog } from '../../redux/catalog/operations';
 import { Modal } from 'components/Modal/Modal';
-import { closeModal, openModal } from '../../redux/catalog/modalSlice';
 import { Filter } from 'components/Filter/Filter';
 import {
   addToFavorites,
@@ -23,7 +22,7 @@ export default function CatalogPage() {
   };
 
   const [selectedItemId, setSelectedItemId] = useState(null);
-  const { isOpen } = useSelector(state => state.modal);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const favorites = useSelector(state => state.favorites.favorites);
 
@@ -37,17 +36,18 @@ export default function CatalogPage() {
       setFilteredItems(items);
     }
   }, [location, vechicleType, items]);
+  const handleModalToggle = (itemId = null) => {
+    
+    setSelectedItemId(itemId);
+    setIsModalOpen(prevState => !prevState)
+  };
 
   const handleItemClick = itemId => {
-    setSelectedItemId(itemId);
-    if (!isOpen) {
-      dispatch(openModal());
-    }
+    handleModalToggle(itemId);
   };
 
   const handleCloseModal = () => {
-    setSelectedItemId(null);
-    dispatch(closeModal());
+    handleModalToggle();
   };
 
   const handleSearch = () => {
@@ -126,9 +126,9 @@ export default function CatalogPage() {
             </ListItem>
           ))}
         </ul>
-        {isOpen && (
+        {isModalOpen && (
           <Modal
-            isOpen={isOpen}
+            isOpen={isModalOpen}
             isClose={handleCloseModal}
             gallery={
               filteredItems.find(item => item._id === selectedItemId)?.gallery
