@@ -3,6 +3,7 @@ import { removeFromFavorites, setFavorires } from "../../redux/catalog/favoriteS
 import { BookingForm } from "components/BookingForm/BookingForm";
 import { saveFavoritesToLocalStorage } from "helpers/saveFavoritesToLocalStorage";
 import { useEffect } from "react";
+import { About, Aside, Container, UpperContainer } from "./FavoritePage.styled";
 
 export default function FavoritePage() {
     const dispatch = useDispatch();
@@ -24,7 +25,8 @@ export default function FavoritePage() {
     }, [dispatch])
 
   return (
-    <div>
+      <Container>
+          <UpperContainer>
       <h1>Favorite</h1> 
           <ul>
               {favorites.map(item => (
@@ -33,8 +35,19 @@ export default function FavoritePage() {
                       <p>{item.description}</p>
                   </li>
               ))}
-          </ul>
-          <BookingForm/>
-    </div>
+              </ul>
+              </UpperContainer>
+          <Aside>
+               
+              <About>
+                  <ul>
+                    <li>Features</li>
+                    <li>Reviews</li>
+                  </ul>
+                 <p>Lorem, ipis unde eos rep</p></About>
+              <BookingForm />
+          </Aside>
+          
+    </Container>
   );
 }
